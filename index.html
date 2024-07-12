@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body >
+		<div id="contenitore" data-spy="scroll" data-target=".navbar" data-offset="-50">
+		    <div id="home">
+			    <h1 id="titolo_home">GABRIELE STELLA</h1></br>
+				<h1 id="sottotitolo_home">Interactive resume</h1>
+				<ul id="ul_in">
+				    <li ><a id="a_1" href="#profilo" >▼</a></li>
+				</ul>
+			</div>
+			<div id="contenitore_2" >	
+				<div id="div_navbar">								
+					<nav id="navbar_interna"class="navbar">
+						<ul id="nav_interna" class="navbar-nav" >
+							<li class="nav-item">
+								<a id="burg">
+									<button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="nav_open()">&#9776;</button>
+									<button id="closeNav" class="w3-button w3-teal w3-xlarge" onclick="nav_close()">X</button>
+								</a>
+							</li>						  
+							<li class="nav-item"><a class="nav-link active" href="#profilo">Profilo</a></li>
+							<li class="nav-item"><a class="nav-link" href="#informatica_societa">Informatica e societa</a></li>
+							<li class="nav-item"><a class="nav-link" href="#pcto">PCTO</a></li>
+							<li class="nav-item"><a class="nav-link" href="#portafolio">Portafolio</a></li>
+							<li class="nav-item"><a class="nav-link" href="#educazione_civica">Educazione Civica</a></li>
+							<li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div id="profilo" class="div_sez">
+
+					<h1 class="titolo_sez">Profilo</h1></br>
+					<div id="div_prof_corp">
+						<div class="div_prof_corp_1">
+							<h2 class="sottotitolo_sez">chi sono?</h2>
+							<p class="p_testo" style="left:0;">Sono uno studente del quinto anno dell'Istituto Tecnico Economico Paolo Savi a Viterbo indirizzo SIA(Sistemi Informativi Aziendali).</p>
+						</div>
+						<div class="div_prof_corp_1">
+							<img id="foto_profilo" src="im_index/im_nera.jpg">
+						</div>
+						<div class="div_prof_corp_1">
+							<h2 class="sottotitolo_sez" >competenze</h2>
+							<p class="p_testo" style="left:0;">
+								-gestire e progettare pagine web;
+							</br>
+								-organizzare e gestire i data base aziendali;
+							</br>
+								-gestire e progettare il sito web aziendale;
+							</br>
+								-sistemi e processi aziendali;
+							</br>
+								-contabilità.
+							</p>
+						</div>
+						</br>
+						</br>
+					</div>
+				</div>
+				<div id="informatica_societa" class="div_sez" style="background-color:beige;">
+					<h1 class="titolo_sez">Informatica e societa</h1></br>
+					<p class="p_testo">
+                        <img class="img_testo" src="im_index/im_inf_e_soc.jpg" style="box-shadow: 0 12px 20px 0 rgb(24, 57, 155), 0 12px 20px 0 rgb(87, 55, 124);">
+                        <b>Cosa rappresenta l’Information e Communication Technology (ICT) oggi, nelle aziende e, soprattutto, nella nostra vita di tutti i giorni?</b>
+						Un buon modo per rispondere a questa domanda è analizzare una “normale” giornata della nostra vita.
+                    </p>
+					</b> 
+					</br>
+					<a class="a_pag" href="inf_e_soc/inf_e_soc.html"><span>Scopri di più</span></a>
+					</br>
+					</br>
+				</div>
+				<div id="pcto"  class="div_sez">
+					<h1 class="titolo_sez">PCTO</h1></br>
+					<p class="p_testo">
+                        <img class="img_testo" src="im_index/im_pcto.png" style="box-shadow: 0 12px 20px 0 rgb(64, 104, 224), 0 12px 20px 0 rgb(70, 6, 143);">
+					    <b> Nel corso del trienio ho svolto vari percorsi trasversali per l'orientamento, che mi hanno avvicinato al mondo del lavoro: permettendomi di muovere i miei primi passi nel settore lavorativo e acquisire competenze e conoscenze che mi torneranno utili in futuro.</b>  
+					</p>
+					</br>
+                    </br>
+					<a class="a_pag" href="pcto/pcto.html"><span>Scopri di più</span></a>
+					</br>
+					</br>
+				</div>
+				<div id="portafolio" class="div_sez" style="background-color:beige;">
+					<h1 class="titolo_sez">Portafoglio</h1></br>
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+                        <div class="carousel-cell">
+							<img src="im_index/im_memory.png" alt="Avatar" class="im_carousel">
+							<div class="middle">
+								<div class="text">GAME OF MEMORY</div>
+								<a class="a_carousel" href="memory/memory.html">PLAY</a>
+							</div>
+						</div>
+                        <div class="carousel-cell">
+							<img src="im_index/im_perogative_parl.jpg" alt="Avatar" class="im_carousel">
+							<div class="middle">
+								<a class="a_carousel" href="perogative_parl/home.html">GO</a>
+							</div>
+						</div>
+                        <div class="carousel-cell">
+							<img src="im_index/im_sito_storia.jpg" alt="Avatar" class="im_carousel">
+							<div class="middle">
+
+								<a class="a_carousel" href="sito_storia/SitoStoria.html">GO</a>
+							</div>
+						</div>
+                        <div class="carousel-cell">
+							<img src="im_index/im_convertitore.jpg" alt="Avatar" class="im_carousel">
+							<div class="middle">
+
+								<a class="a_carousel" href="convertitore_n_binari/es.7.1.1.html">GO</a>
+							</div>
+						</div>
+						<div class="carousel-cell">
+							<img src="im_index/im_criptografia.jpg" alt="Avatar" class="im_carousel">
+							<div class="middle">
+
+								<a class="a_carousel" href="cripto_decripta/es.57.1.html">GO</a>
+							</div>
+						</div>
+						<div class="carousel-cell">
+							<img src="im_index/im_php.jpg" alt="Avatar" class="im_carousel">
+							<div class="middle">
+
+								<a class="a_carousel" href="pagina_php/index.php">GO</a>
+							</div>
+						</div>
+                      </div>
+					  </br>
+					  </br>
+                </div>
+				<div id="educazione_civica" class="div_sez" >
+					<h1 class="titolo_sez">Educazione civica</h1></br>
+					<p class="p_testo">
+                        <img class="img_testo" src="im_index/im_ed_civ.png" style="box-shadow: 0 12px 20px 0 rgb(30, 177, 245), 0 12px 30px 0 rgb(235, 38, 176);">
+					     Nel corso del mio percorso scolastico ho svolto la materia d'<b>educazione civica</b>, che ha come finalità di fornire gli strumenti per conoscere i <b>propri diritti e doveri</b>, di formare cittadini responsabili e attivi che partecipino pienamente e con consapevolezza alla vita civica, culturale e sociale  della loro comunità, fornendo gli strumenti per utilizzare consapevolmente e responsabilmente i nuovi mezzi di comunicazione e gli strumenti digitali. 
+					</p> 
+					</br> 
+					</br> 
+					<a class="a_pag" href="ed_civ/ed_civ.html"><span>Scopri di più</span></a>
+					</br>
+					</br>
+				</div>
+				<div id="contatti" class="div_sez" style="background:rgb(73, 73, 73);">				    
+					<h1 class="titolo_sez" style="color:#222222;">Contatti</h1></br>
+					<hr>
+					<div id="div_social">
+						<a href="#" class="fa fa-google"></a><a href="#" class="a_fa">gabrielestella2003@gmaol.com</a>
+						</br>
+						<a href="#" class="fa fa-linkedin"></a><a href="#" class="a_fa">www.linkedin.com/in/gabrielestella</a>
+					</div>
+					<hr>
+				    </br>
+			        </br>
+				</div>
+			</div>
+		</div>
+
+        <script type="text/javascript">
+			/*MENU AD AMBURGHER*/
+			function nav_open() {
+			  document.getElementById("closeNav").style.display = "block";
+              document.getElementById("openNav").style.display = "none";
+			  var header = document.getElementById("nav_interna");
+			  var btns = header.getElementsByClassName("nav-link");
+			  for (var i = 0; i < btns.length; i++) {
+				btns[i].style.display = "block";
+			  }
+			}
+			function nav_close() {
+			  document.getElementById("openNav").style.display = "block";
+			  document.getElementById("closeNav").style.display = "none";
+			  var header = document.getElementById("nav_interna");
+			  var btns = header.getElementsByClassName("nav-link");
+			  for (var i = 0; i < btns.length; i++) {
+				btns[i].style.display = "none";
+			  }
+			}
+			function myFunction(x) {
+			if (x.matches) { 
+				var header = document.getElementById("nav_interna");
+				var btns = header.getElementsByClassName("nav-link");
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].style.display = "none";
+			    }
+				for (var i = 0; i < btns.length; i++) {
+				btns[i].addEventListener("click", function() {
+					for (var i = 0; i < btns.length; i++) {
+					btns[i].style.display = "none";
+			    }
+				document.getElementById("openNav").style.display = "block";
+				document.getElementById("closeNav").style.display = "none";		  
+				});
+				}	
+			} else{
+				var header = document.getElementById("nav_interna");
+				var btns = header.getElementsByClassName("nav-link");
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].style.display = "block";
+			    }
+			}
+			}
+			var x = window.matchMedia("(max-width: 900px)")
+			myFunction(x) 
+			x.addListener(myFunction)
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+    
+	</html>
