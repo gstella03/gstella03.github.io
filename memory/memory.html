@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+
+	<head>
+	    
+		<style> 
+			body {	    
+				text-align:center;
+				color:white;
+				background-size: 100% 100%;
+				}			
+			table,td {
+			    border:solid  4px white; 
+				margin:auto; 
+				font-size: 12pt
+				}
+		    #carta {	
+			    background-repeat: no-repeat;
+				background-position: center;
+				width: 80px;
+				height :100px;
+				}
+            #dorso {	
+			    background-repeat: no-repeat;
+				background-position: center;
+				width: 80px;
+				height:100px;
+				}
+			#gif {	
+			    background-repeat: no-repeat;
+				background-position: center;
+				width: 120px;
+				height:800px;
+				}
+			#gif_gioco {	
+			    background-repeat: no-repeat;
+				background-position: center;
+				width: 400px;
+				height:600px;
+				}
+			h1 {
+			    color:white; 
+				font-family:Courier New; 
+				background:brown; 
+				text-align: center; 
+				width:50%; 
+				margin:10px auto 20px auto; 
+				
+				border-radius:20px 20px 20px 20px;
+				}
+			#btn_start {
+			
+			    color:white; 				 
+				background:brown; 
+				text-align: center; 
+                height :80px;
+				width:80px;
+				margin:10px auto 20px auto; 
+				
+				border-radius:100px 100px 100px 100px;
+				}
+            #btn_restart {
+			    color:white; 				 
+				background:brown; 
+				text-align: center; 
+                height :80px;
+				width:80px;
+				margin:10px auto 20px auto; 
+				
+				border-radius:100px 100px 100px 100px;
+				}
+			#tbl_timer,#cella_timer{			     				 
+				background:brown;
+				border:solid  4px brown;
+                margin:10px auto 20px auto; 
+				 
+				border-radius:20px 20px 20px 20px; 	
+                font-size: 18pt;				
+				}
+			#cella_timer{
+			    border:solid  4px brown; 
+			}
+			#cella_memory_finito{
+			   font-size: 18pt;
+			    border:solid  4px brown; 
+			}
+			.div_contenitore{
+			  	background-image: url("sfondo.1.jpg");
+				background-repeat: no-repeat;
+				background-position: center; 
+                background-size: 100% 100%;
+				position: fixed;
+			    top: 0;
+			    left: 0;
+			    bottom: 0;
+			    right: 0;
+			    overflow: auto;	  
+			    text-align: center;			  
+			}
+			.div_contenitore_2{
+			    position: relative;
+			    width: 100%;
+			    height: 100%;
+			    right: 0px;
+				left: 0px;
+			    text-align: center;
+				margin:auto;
+			}
+			.div_start{
+			
+                position: absolute;
+				top: 200px;
+                right: 45%;
+				left: 45%;
+				z-index: 2;
+			}
+			.div_count{
+                position: absolute;
+				top: 200px;
+				 right: 5%;
+				 left: 5%;
+				z-index: 1;
+			}
+			.div_gif{         
+                position: absolute;
+				top: 200px;
+                right: 5%;
+                left: 5%;
+				z-index: 0;
+			}
+
+		</style>
+	</head>
+    <div class="div_contenitore">    
+    <body>	
+	       <div class="div_contenitore_2">
+	      
+	       
+            <script>
+			    document.write('<div class="div_intestazione" style="position: absolute; top: 5px; right: 5%; left: 5%; z-index:4;">');
+			    document.write("<h1>GIOCO DEL MEMORY</h1 >");
+				var v=new Array(5);
+				var lv=v.length;
+				v[0]='<img src="arciere.jpg" id="carta">';
+				v[1]='<img src="cavaliere.jpg" id="carta">';
+				v[2]='<img src="drago.jpg" id="carta">';
+				v[3]='<img src="soldato.jpg" id="carta">';
+				v[4]='<img src="trono.jpg" id="carta">';
+				document.write('<table id="tbl_inizio">');
+				document.write("<tr>");				
+				for (i=0; i<lv; i++){
+					document.write("<td>");
+					document.write(v[i]) ;
+					document.write("</td>");
+				} 
+				document.write("</tr>");
+				document.write("</table>");
+				document.write("</div>");
+						    			
+				var vd=new Array(2*lv);
+				var lvd=vd.length;
+                var dor='<img src="cartaDaGioco.jpg" id="dorso">';				
+				var vg=new Array(2*lv);
+				var lvg=vg.length;
+                var	p;
+
+				
+				document.write('<div class="div_start">');
+				document.write("<button id='btn_start' onclick='start_gioco()'>start</button>");
+				document.write("</div>");
+				
+                document.write('<div class="div_gif" style="position: absolute; top: 190px; right: 5%; left: 5%; z-index:0;">');
+				document.write('<p id="p_gif" style="visibility:hidden">');
+				document.write('<img src="Corone.gif" id="gif" style="height:100px; width:100px;">');
+				document.write("</p>");
+				document.write("</div>");
+				
+				var count;
+                document.write('<div class="div_count">');
+				document.write('<h1 id="h1_countdown_gioco" style="visibility:hidden">"+count+"</h1>');
+				document.write("</div>");
+
+                document.write('<div id="div_regole_gioco" style="position: absolute; top: 300px; right: 5%; left: 5%; z-index:3; background-color:brown; margin:auto; height :200px; width:500px; color:white; border-radius:20px 20px 20px 20px;" >');
+				document.write("<h1>REGOLE GIOCO</h1>");
+				document.write("</br>");
+				document.write('il gioco consiste nel individuare coppie di carte uguali cliccando le carte,');
+				document.write("</br>");
+				document.write('si dispone con un punteggio iniziale di 500 punti,');
+				document.write("</br>");
+				document.write('per ogni tentativo -10 punti,');
+				document.write("</br>");
+				document.write('se termini entro 1 minuti vinci 100 punti');
+				document.write("</div>");
+
+				document.write('<div id="div_tbl_gioco" style="position: absolute; top:310px; right: 5%; left: 5%; z-index:4;">');
+				document.write('<table id="tbl_gioco" style="visibility:hidden">');
+				var dr=2;
+				var dc=5;
+				for (r=0; r<dr; r++){
+					document.write("<tr >");
+					for (c=0; c<dc; c++){
+						document.write("<td class='cella'>");
+						document.write("</td>");
+				    }
+				document.write("</tr>");				
+				}
+				
+				document.write("</table>");
+
+			
+				
+                var tempo;
+				var minuti;
+				var secondi;			
+				document.write('<table id="tbl_timer" style="visibility:hidden">');
+				    document.write("<tr>");
+					    document.write('<td id="cella_memory_finito" style="visibility:hidden">');
+						document.write("</td>");
+						document.write('<td id="cella_timer">');
+							document.write('Tempo');
+						document.write("</td>");
+						document.write('<td id="cella_timer">');
+							document.write(tempo);
+						document.write("</td>");			
+
+						document.write('<td id="cella_timer">');
+							document.write('Tentativi');
+						document.write("</td>");
+						document.write('<td id="cella_timer">');
+							document.write(tentativi);
+						document.write("</td>");			
+
+						document.write('<td id="cella_timer">');
+							document.write('Punti');
+						document.write("</td>");
+						document.write('<td id="cella_timer">');
+							document.write(punti);
+						document.write("</td>");			
+					document.write("</tr>");
+				document.write("</table>");
+				document.write("</div>");
+				
+				document.write('<div id="div_btn_restart" style="position:absolute; top:650px; right: 5%; left: 5%; z-index:-1;">');
+				document.write("<button id='btn_restart' onclick='restart_gioco()' style='visibility:hidden'>restart</button>");
+				document.write("</div>");
+				var f_controllo_att;
+                var f_primo_click;
+				var inf_primo_click;
+				var r_primo_click;
+				var c_primo_click;
+				var f_secondo_click;
+				var inf_secondo_click;
+				var r_secondo_click;
+				var c_secondo_click;
+				var f_gioco_finito;
+				var pos_click;
+				var ppc;
+				var psc;
+                var col;
+				var riga;
+				var vp=new Array(2*lv);
+				var lvp=vp.length;
+				var x;
+				var f_click_valido;
+				var tentativi;
+				var punti;
+				function assegnazioni(){
+				    for (i=0; i<lvd; i++){
+                        vd[i]=dor;
+				    }
+				    for (i=0; i<lvg; i++){
+                        vg[i]=0;
+				    }
+				    for (x=0; x<2; x++){
+						for (i=0; i<lv; i++){
+								p=pos_rand_lib(vg)				
+								vg[p]=v[i];
+							}				
+				    }
+					elem=document.getElementById("tbl_gioco");
+				    for (r=0; r<dr; r++){				
+				        for (c=0; c<dc; c++){
+				            elem.rows[r].cells[c].innerHTML=dor;
+						}				
+				    }
+					f_controllo_att=false;
+					f_primo_click=true;
+					inf_primo_click=-1;
+					r_primo_click=-1;
+					c_primo_click=-1;
+					f_secondo_click=false;
+					inf_secondo_click=-1;
+					r_secondo_click=-1;
+					c_secondo_click=-1;
+					f_gioco_finito=false;
+					for (i=0; i<lvp; i++){
+						vp[i]=-1;
+				    }
+					x=0;
+					f_click_valido=true;
+					tempo=0;
+				    minuti=0;
+				    secondi=0;
+					count=3;
+					tentativi=0;
+					elem=document.getElementById("tbl_timer");						
+				    elem.rows[0].cells[4].innerHTML=tentativi;
+					punti=500;
+					elem.rows[0].cells[2].innerHTML=minuti+':'+secondi;
+					elem=document.getElementById("tbl_timer");						
+				    elem.rows[0].cells[6].innerHTML=punti;
+					elem=document.getElementById("cella_memory_finito");
+					elem.innerHTML='';
+				}
+				var oTbl;
+				oTbl=document.getElementById("tbl_gioco");
+				oTbl.onclick=gsOnClick_Tab;
+				function gsOnClick_Tab(e) {
+					if (f_controllo_att==false){
+						var obj_att=e.target;
+						if(obj_att.className=='cella') { 
+							col = obj_att.cellIndex;
+							riga = obj_att.parentNode.rowIndex;
+						} else {
+							col=obj_att.parentNode.cellIndex;
+							riga=obj_att.parentNode.parentNode.rowIndex;
+						}
+						pos_click=(riga*dc)+col;				
+						f_click_valido=click_valido(pos_click);					
+						if (f_click_valido==true){
+							if (f_primo_click){					    
+								ppc=pos_click;	
+								vp[x]=ppc;							
+								elem=document.getElementById("tbl_gioco");						
+								elem.rows[riga].cells[col].innerHTML=vg[ppc];
+								f_primo_click=false;
+								inf_primo_click=vg[ppc];
+								r_primo_click=riga;
+								c_primo_click=col;
+								f_secondo_click=false;								 
+							}
+							if (f_secondo_click){					    
+								psc=pos_click;
+								elem=document.getElementById("tbl_gioco");						
+								elem.rows[riga].cells[col].innerHTML=vg[psc];
+								inf_secondo_click=vg[psc];
+								r_secondo_click=riga;
+								c_secondo_click=col;
+								f_secondo_click=false;
+								
+								if (inf_primo_click==inf_secondo_click){
+									f_controllo_att=true;
+									window.setTimeout("animazione()");
+									window.setTimeout("carte_uguali()", 1500);
+									f_primo_click=true;	
+									vp[x]=ppc;
+									x++;								
+									vp[x]=psc;
+									x++;
+									tentativi++;
+									elem=document.getElementById("tbl_timer");						
+									elem.rows[0].cells[4].innerHTML=tentativi;
+									punti=punti-10;
+									elem=document.getElementById("tbl_timer");						
+									elem.rows[0].cells[6].innerHTML=punti;								
+								}else{		
+									f_controllo_att=true;
+									window.setTimeout("animazione()");
+									window.setTimeout("carte_diverse()", 3000);
+									tentativi++;
+									elem=document.getElementById("tbl_timer");						
+									elem.rows[0].cells[4].innerHTML=tentativi;
+									punti=punti-10;
+									elem=document.getElementById("tbl_timer");						
+									elem.rows[0].cells[6].innerHTML=punti;
+								}
+								f_gioco_finito=gioco_finito();
+								if (f_gioco_finito==true){
+									window.setTimeout("fine()", 1500);
+									if (minuti==0){
+										punti=punti+100;
+										elem=document.getElementById("tbl_timer");						
+										elem.rows[0].cells[6].innerHTML=punti;
+									}								
+								}
+							}
+							f_secondo_click=true;
+						}
+					}					
+				}
+				function start_gioco(){
+				    elem=document.getElementById("btn_start");
+					elem.style="height :1px; width:1px;";
+                    elem.style.visibility="hidden";
+					elem=document.getElementById("h1_countdown_gioco");
+					elem.style.visibility="visible";
+					var a=assegnazioni();
+					var inizio=countdown();
+					elem=document.getElementById("div_regole_gioco");
+					elem.style.visibility="hidden";
+				}
+				function countdown(){				    
+				    if(count==0){
+					    elem=document.getElementById("h1_countdown_gioco");
+					    elem.style.visibility="hidden";
+					    elem=document.getElementById("tbl_timer");
+						elem.style.visibility="visible";
+						elem=document.getElementById("tbl_gioco");
+						elem.style.visibility="visible";
+						tempo=timer();
+					}else{				    					
+						elem=document.getElementById("h1_countdown_gioco");	
+                        elem.style.visibility="visible";						
+						elem.innerHTML=count;
+						count--;
+						setTimeout("countdown()", 1000);
+					}
+				}
+
+				function timer(){
+					if(f_gioco_finito==false){
+						if(secondi==60)
+						{
+							secondi=0;
+							minuti++;
+						}
+						secondi++;
+						elem=document.getElementById("tbl_timer");						
+						elem.rows[0].cells[2].innerHTML=minuti+':'+secondi;
+						setTimeout("timer()", 1000);
+					}					
+				}
+				function pos_rand_lib(vett){
+					var pos;
+					var cg=0;
+					var f_trovato_p=false;
+					while ((cg<10) && !f_trovato_p)
+					{
+						pos=Math.floor((Math.random()*10));
+						if (vett[pos]==0){
+							f_trovato_p=true;
+						}					
+					}
+					cg++;
+					if(f_trovato_p)
+					{
+					 return pos;
+					} 
+			    }
+				function gioco_finito(){
+				    var i=0;
+					f_gioco_finito=false;
+				    while ((i<lvp)&&!f_gioco_finito){						
+						if (vp[i]==-1) {
+							f_gioco_finito=true;
+						} 
+						i++;						
+				    }
+				    if (f_gioco_finito) {
+						return false;						
+					} else{					  
+					   return true;					   
+					}
+				
+				}
+				
+				function click_valido(pos){
+				    var i=0;
+					f_click_valido=false;
+				    while ((i<lvp)&&!f_click_valido){						
+						if (pos==vp[i]) {
+							f_click_valido=true;
+						} 
+						i++;						
+				    }
+					if (f_click_valido) {
+						return false;						
+					} else{					  
+					   return true;					   
+					}									
+				}
+				function carte_uguali(){
+					elem=document.getElementById("p_gif");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("tbl_gioco");
+					elem.style.visibility="visible";
+					f_controllo_att=false;
+				}				
+                function carte_diverse(){ 
+				    elem=document.getElementById("p_gif");
+					elem.style.visibility="hidden";	
+					elem=document.getElementById("tbl_gioco");
+					elem.style.visibility="visible";
+				    elem=document.getElementById("tbl_gioco");
+					col=c_primo_click;
+					riga=r_primo_click;
+					elem.rows[riga].cells[col].innerHTML=dor;
+					col=c_secondo_click;
+					riga=r_secondo_click;	
+					elem.rows[riga].cells[col].innerHTML=dor;						
+					f_primo_click=true;	
+                    vp[x]=-1;
+					f_controllo_att=false;
+				
+				}
+				function animazione(){
+				    elem=document.getElementById("p_gif");
+					elem.style.visibility="visible";
+				}
+				function fine(){
+				    elem=document.getElementById("cella_memory_finito");
+					elem.style.visibility="visible";
+					elem.innerHTML="MEMORY COMPLETATO";
+				    elem=document.getElementById("p_gif");
+					elem.style.visibility="visible";					
+					elem=document.getElementById("btn_restart");
+					elem.style.visibility="visible";
+				
+				}
+				function restart_gioco(){
+				    var rinizio=assegnazioni();
+					elem=document.getElementById("cella_memory_finito");
+					elem.style.visibility="hidden";
+				    elem=document.getElementById("p_gif");
+					elem.style.visibility="hidden";									
+					elem=document.getElementById("btn_restart");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("tbl_gioco");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("tbl_timer");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("h1_countdown_gioco");
+					elem.style.visibility="visible";
+					var inizio=countdown();
+				}
+				
+				
+					
+				
+
+
+			
+			</script>
+			</div>
+    </body>
+    </div>
+</html>

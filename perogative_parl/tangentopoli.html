@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{	    
+                margin:0;	
+			}
+            #contenitore{
+                position:fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;  
+                text-align: center;	
+                overflow: auto;	
+            }
+            
+            .navbar{
+                position:fixed;
+                top:0;
+                width: 98.7%;
+                height: 8%;
+                z-index:1;
+                border-bottom: 1px solid black;
+                border-top: 1px solid black;
+                background-color: rgba(0,0,0,0.8);
+
+		    }
+            .navbar-nav{
+                margin-top:0;
+                /*padding: left 1000px;*/
+                width: 100%;
+                list-style-type: none;	
+
+            }
+            li a {
+                float:left;
+                font-size: 16px;
+                color:white;
+                width: 13%;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li a:hover {
+		        color: #999999;		
+		    }
+            .active {
+                color: red;
+            }
+
+            #testo{
+                background-color:white;
+                width: 100%;
+                height: 100%;
+                margin:0;
+            }
+            #titolo_testo{
+                position: relative;
+                top:5%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid black;
+                border-bottom-color: black(255,255,255,0.35);
+                display: inline-block;
+                font-size: 50px;
+                color: rgb(156, 4, 4);
+            }
+            #p_testo{
+                position: relative;
+                width: 90%;
+                font-size: 25px;
+                text-align:left;
+                left: 5%;
+                top:5%;
+            }
+            #img_testo{
+                float: right;
+                width:400px;
+                height:300px;
+                margin-left:15px;
+            }
+            footer{
+                width: 100%;
+                height: 20%;
+                background-color: dimgray;
+                color: white;
+                text-align: center;  			  
+            }
+                        /*------NAV-BAR-RESPONSIVE----*/
+                        #div_btn{
+                position:absolute;
+                z-index:2;
+                height:600%;
+                width:10px;
+                margin-left:0;
+                display: none;
+            }
+            #openNav{
+                position:sticky;
+                color:black;
+                border:white;
+                font-size: 50px;
+                background:rgba(0,0,0,0);
+                top:0%;
+                
+            }
+            #closeNav{
+                position:fixed;
+                color:black;
+                border:white;
+                font-size: 80px;
+                background:rgba(0,0,0,0);
+                margin-top:0;
+                left:0%;
+            }
+            #Sidebar{
+                position:fixed;
+                display:none;
+                width:100%;
+                height: 100%;
+                background:rgba(0,0,0,0.8);
+                z-index:2;
+                top:0;
+            }
+            .nav_1{
+                display: block;
+                color: white;
+                font-size: 25px;
+                padding-bottom: 15px;
+                border-bottom: 1px  solid white;
+                border-bottom-color: black(255,255,255,0.35);
+                padding: 8px 16px;
+                text-decoration: none;
+                background:rgba(0,0,0,0);
+            
+            }
+            .nav_1:hover {
+                color: #999999;
+            }
+            .li_1{
+                display: block;
+                color: white;
+                padding: 8px 16px;
+                text-decoration: none;
+                padding: 25px;
+            }
+            .ul1{
+                position: relative;
+                list-style-type: none;
+                top:20%;
+                margin: 0;
+                padding: 0;
+                width:100%;
+                background:rgba(0,0,0,0);
+            }
+            @media screen and (max-width:1050px) {
+            #mynav{display: none;}
+            #div_btn{display: block;}
+            #ul_in{width:100%;left:0;}
+            #testo{height:auto;}
+            #img_testo{float:center;margin-left:0;margin-right:0;float:none;width: auto;}
+            }
+        </style>
+    </head>
+	<body >
+        <div id="contenitore" >
+            <div id="div_btn">	   
+                <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="nav_open()">&#9776;</button>
+            </div>
+            <div  id="Sidebar">
+              <button id="closeNav" onclick="nav_close()">&times;</button></br>
+                <ul id="ul1">
+                    <li class="li_1"><a class="nav_1" href="home.html#testo_home">HOME</a></li>
+                    <li class="li_1"><a class="nav_1" href="insindacabilita.html">INSINDACABILITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="incompatibilita.html">INCOMPATIBILITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="indennita.html">INDENNITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="immunita.html">IMMUNITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="autorizzazione_procedere.html">AUTORIZZAZIONE A PROCEDERE</a></li>
+                </ul>
+            </div>
+                <nav class="navbar" id="mynav">
+                    <ul id="nav_interna" class="navbar-nav" >
+                        <li class="nav-item"><a class="nav-link " href="home.html#testo_home">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link " href="insindacabilita.html">INSINDACABILITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="incompatibilita.html">INCOMPATIBILITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="indennita.html">INDENNITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="immunita.html">IMMUNITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="autorizzazione_procedere.html">AUTORIZZAZIONE A PROCEDERE</a></li>
+                      </ul>
+                </nav>
+                <div id="testo">
+                    <h1 id="titolo_testo">Tangentopoli</h1></br>
+                    <p id="p_testo">
+                        <img id="img_testo" src="im_tangentopoli.jpg">
+                        Mani pulite (comunemente nota anche come Tangentopoli) è il nome giornalistico dato a una serie d'inchieste giudiziarie, condotte in Italia nella prima metà degli anni novanta da parte di varie procure giudiziarie, che rivelarono un sistema fraudolento ovvero corrotto che coinvolgeva in maniera collusa la politica e l'imprenditoria italiana.
+                        <br>
+                        <br>
+                        L'impatto mediatico e il clima di sdegno dell'opinione pubblica che ne seguirono furono tali da decretare il crollo della cosiddetta Prima Repubblica e l'inizio della Seconda Repubblica in quanto partiti storici della Repubblica Italiana come la DC e il PSI si sciolsero venendo sostituiti in Parlamento, nelle successive elezioni, da partiti di nuova formazione o che prima erano sempre stati minoritari e comunque all'opposizione; anche senza un formale cambiamento di regime, si ebbe un profondo mutamento del sistema partitico e un ricambio di parte dei suoi esponenti nazionali.
+                  </p>
+ 
+                </div>
+                <footer>
+                    <p>AUTORE: Gabriele Stella, Alessandro Mercuri</p>
+                </footer>
+            </div>
+
+
+		
+
+        <script type="text/javascript">
+             /*MENU AD AMBURGHER*/
+			function nav_open() {
+			  document.getElementById("Sidebar").style.width = "100%";
+			  document.getElementById("Sidebar").style.display = "block";
+			  document.getElementById("div_btn").style.visibility = 'hidden';
+			}
+			function nav_close() {
+			  document.getElementById("Sidebar").style.display = "none";
+			  document.getElementById("div_btn").style.visibility = "visible";
+			}
+			var header = document.getElementById("ul1");
+			var btns = header.getElementsByClassName("nav_1");
+			for (var i = 0; i < btns.length; i++) {
+			   btns[i].addEventListener("click", function() {
+			   document.getElementById("Sidebar").style.display = "none";
+			   document.getElementById("div_btn").style.visibility = "visible";		  
+			  });
+			}
+	
+		</script>
+
+    </body>
+    
+	</html>

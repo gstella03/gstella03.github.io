@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+            body {
+				background-image: url("im_criptografia.jpg");
+				background-repeat: no-repeat;
+				background-position: center; 
+				background-size: 100% 100%;
+		        text-align:center; 
+				color:orange;
+				}
+			table,td {
+			    border:solid  2px white; 
+				margin:auto; color:black; 
+				background:white; 
+				}
+			h1, h2 {
+				color:black; 
+				font-family:Courier New; 
+				background:rgb(81, 177, 95);
+				text-align:center; 
+				border-radius:20px 20px 20px 20px; 
+				margin:10px auto 20px auto;
+                text-shadow:1px 1px 1px black;				
+				}
+			.myDiv {
+				background-color:rgb(81, 177, 95);
+                margin:auto;				
+				text-align: center;
+				height :500px;
+				width:500px;
+				color:white;
+				border-radius:20px 20px 20px 20px;
+				}
+			button{
+			    color:black; 				 
+				background:rgba(2, 94, 14, 0.822); 
+				text-align: center; 
+                height :50px;
+				width:100px;
+				margin:10px auto 20px auto; 
+				border-radius:100px 100px 100px 100px;
+				}
+				label{
+					color:black; 
+				}
+            #div_traduzione{
+                background:white; 
+                height :200px;
+				width:300px;
+                margin:auto;				
+                border-radius:20px 20px 20px 20px;
+                color:black;
+                visibility: hidden;
+            }
+		</style>        
+	</head>
+	<body>
+        <div id="contenitore">
+            <h1>CRIPTOGRAFIA</h1>
+            <h2><marquee>cripta e decripta i tuoi messaggi</marquee></h2>
+            <div class="myDiv">
+            <br/>
+            <p id='ptxr'><h1>CONVERTI</h1></p>
+            <br/>
+            <form action="/action_page.php">
+                <input type="radio" id="cripta" name="fav_language" value="Click me" onclick='cripta_str()'>
+                <label for="cripta">CRIPTA</label>
+                <input type="radio" id="decripta" name="fav_language" value="Click me" onclick='decripta_str()'>
+                <label for="decripta">DECRIPTA</label>
+            </form>
+            <br/>
+            <label id='lbl_numero' for='numero' style="visibility:hidden;color:black">Inserisci stringa: </label>
+            <input type='stinga' id='stringa_inp' style="visibility:hidden">
+            <button id='btt_converti' onclick='converti()' style="visibility:hidden">converti</button>
+            <br/>
+            <br/>
+            <div id="div_traduzione">
+                <p id='p_testo'></p>
+            </div>
+        </div>
+	    <script>
+            var f_cripta=false;
+		    var	s_crip;
+            var s_decrip;	
+            function cripta_str(){
+                f_cripta=true;
+                elem=document.getElementById("div_traduzione");
+			    elem.style.visibility="hidden";
+				elem=document.getElementById("lbl_numero");
+                elem.style.visibility="visible";
+				elem=document.getElementById("stringa_inp");
+                elem.style.visibility="visible";
+                elem=document.getElementById("btt_converti");
+                elem.style.visibility="visible";
+				elem=document.getElementById("stringa_inp").value="";
+                elem=document.getElementById("stringa_inp");
+			    elem.style.background="white";
+				elem=document.getElementById("h1_errore");
+				elem.style.visibility="hidden";	
+            }	
+            function decripta_str(){
+                f_cripta=false;
+                elem=document.getElementById("div_traduzione");
+			    elem.style.visibility="hidden";
+				elem=document.getElementById("lbl_numero");
+                elem.style.visibility="visible";
+				elem=document.getElementById("stringa_inp");
+                elem.style.visibility="visible";
+                elem=document.getElementById("btt_converti");
+                elem.style.visibility="visible";
+				elem=document.getElementById("stringa_inp").value="";
+                elem=document.getElementById("stringa_inp");
+			    elem.style.background="white";
+				elem=document.getElementById("h1_errore");
+				elem.style.visibility="hidden";		
+            }
+            function converti(){
+			    var f_errore=false;
+			    if (f_cripta){
+				    var str = document.getElementById("stringa_inp").value;
+                    var ls=str.length;
+                    var v_a=new Array(ls);
+                    var stringa="";
+                    if (str==''){
+					    f_errore=true;
+						e=errore(f_errore);
+					} else {
+                        for (i=0;i<ls;i++) {
+                            v_a[i]=str.charCodeAt(i)+5;
+                            stringa=stringa+String.fromCharCode(v_a[i]);
+                        }
+                        f_errore=false;
+						e=errore(f_errore);
+                        elem=document.getElementById("div_traduzione");
+                        elem.style.visibility="visible";
+                        elem=document.getElementById("p_testo");					
+                        elem.innerHTML=stringa;  
+                    }              					
+                }else{
+                    var str = document.getElementById("stringa_inp").value;
+                    var ls=str.length;
+                    var v_a=new Array(ls);
+                    var stringa="";
+                    if (str==''){
+					    f_errore=true;
+						e=errore(f_errore);
+					} else {	
+                        for (i=0;i<ls;i++) {
+                            v_a[i]=str.charCodeAt(i)-5;
+                            stringa=stringa+String.fromCharCode(v_a[i]);
+                        }
+                        f_errore=false;
+						e=errore(f_errore);
+                        elem=document.getElementById("div_traduzione");
+                        elem.style.visibility="visible";
+                        elem=document.getElementById("p_testo");					
+                        elem.innerHTML=stringa;
+                    } 
+                }
+            }
+			function errore(e){
+			    if(e==false){						
+                    elem=document.getElementById("stringa_inp");
+					elem.style.background="white";					
+				} else {
+					elem=document.getElementById("div_traduzione");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("stringa_inp");
+					elem.style.background="red";
+				}			
+			}
+		    
+			
+			
+
+			
+		
+		</script>
+        </div>
+	</body>
+</html>

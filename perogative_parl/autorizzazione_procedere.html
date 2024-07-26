@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{	    
+                margin:0;	
+			}
+            #contenitore{
+                position:fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;  
+                text-align: center;	
+                overflow: auto;	
+            }
+            
+            .navbar{
+                position:fixed;
+                top:0;
+                width: 98.7%;
+                height: 8%;
+                z-index:1;
+                border-bottom: 1px solid black;
+                border-top: 1px solid black;
+                background-color: rgba(0,0,0,0.8);
+
+		    }
+            .navbar-nav{
+                margin-top:0;
+                /*padding: left 1000px;*/
+                width: 100%;
+                list-style-type: none;	
+
+            }
+            li a {
+                float:left;
+                font-size: 16px;
+                color:white;
+                width: 13%;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li a:hover {
+		        color: #999999;		
+		    }
+            .active {
+                color: red;
+            }
+
+            #testo{
+                background-color:white;
+                width: 100%;
+                height: 500%;
+                margin:0;
+            }
+            #titolo_testo{
+                position: relative;
+                top:5%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid black;
+                border-bottom-color: black(255,255,255,0.35);
+                display: inline-block;
+                font-size: 50px;
+                color: rgb(156, 4, 4);
+            }
+            .p_testo{
+                position: relative;
+                width: 90%;
+                font-size: 25px;
+                text-align:left;
+                left: 5%;
+                top:5%;
+            }
+            .img_testo{
+                float: right;
+                width:400px;
+                height:300px;
+                margin-left:15px;
+            }
+            #titolo_storia{
+                position: relative;
+                top:15%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid black;
+                border-bottom-color: black(255,255,255,0.35);
+                display: inline-block;
+                font-size: 50px;
+                color: rgb(156, 4, 4);
+            }
+            .p_testo_sto{
+                position: relative;
+                width: 90%;
+                font-size: 25px;
+                text-align:left;
+                left: 5%;
+                top:15%;
+            }
+            .img_testo_sto{
+                float: right;
+                width:400px;
+                height:300px;
+                margin-left:15px;
+            }
+            table,td {
+                position: relative;
+			    border:solid  2px rgb(51, 50, 50); 
+				margin:auto; 
+				font-size: 25px;
+                top:15%;
+				}
+            footer{
+
+                width: 100%;
+                height: 20%;
+                background-color: dimgray;
+                color: white;
+                text-align: center;  			  
+            }
+            /*------NAV-BAR-RESPONSIVE----*/
+            #div_btn{
+                position:absolute;
+                z-index:2;
+                height:600%;
+                width:10px;
+                margin-left:0;
+                display: none;
+            }
+            #openNav{
+                position:sticky;
+                color:black;
+                border:white;
+                font-size: 50px;
+                background:rgba(0,0,0,0);
+                top:0%;
+                
+            }
+            #closeNav{
+                position:fixed;
+                color:black;
+                border:white;
+                font-size: 80px;
+                background:rgba(0,0,0,0);
+                margin-top:0;
+                left:0%;
+            }
+            #Sidebar{
+                position:fixed;
+                display:none;
+                width:100%;
+                height: 100%;
+                background:rgba(0,0,0,0.8);
+                z-index:2;
+                top:0;
+            }
+            .nav_1{
+                display: block;
+                color: white;
+                font-size: 25px;
+                padding-bottom: 15px;
+                border-bottom: 1px  solid white;
+                border-bottom-color: black(255,255,255,0.35);
+                padding: 8px 16px;
+                text-decoration: none;
+                background:rgba(0,0,0,0);
+            
+            }
+            .nav_1:hover {
+                color: #999999;
+            }
+            .li_1{
+                display: block;
+                color: white;
+                padding: 8px 16px;
+                text-decoration: none;
+                padding: 25px;
+            }
+            .ul1{
+                position: relative;
+                list-style-type: none;
+                top:20%;
+                margin: 0;
+                padding: 0;
+                width:100%;
+                background:rgba(0,0,0,0);
+            }
+            @media screen and (max-width:1050px) {
+            #mynav{display: none;}
+            #div_btn{display: block;}
+            #ul_in{width:100%;left:0;}
+            #testo{height:auto;}
+            .img_testo_sto{float:center;margin-left:0;margin-right:0;float:none;width: auto;}
+            }
+        </style>
+    </head>
+	<body >
+        <div id="contenitore" >
+            <div id="div_btn">	   
+                <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="nav_open()">&#9776;</button>
+            </div>
+            <div  id="Sidebar">
+              <button id="closeNav" onclick="nav_close()">&times;</button></br>
+                <ul id="ul1">
+                    <li class="li_1"><a class="nav_1" href="home.html#testo_home">HOME</a></li>
+                    <li class="li_1"><a class="nav_1" href="insindacabilita.html">INSINDACABILITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="incompatibilita.html">INCOMPATIBILITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="indennita.html">INDENNITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="immunita.html">IMMUNITA'</a></li>
+                    <li class="li_1"><a class="nav_1" href="autorizzazione_procedere.html">AUTORIZZAZIONE A PROCEDERE</a></li>
+                </ul>
+            </div>
+                <nav class="navbar" id="mynav">
+                    <ul id="nav_interna" class="navbar-nav" >
+                        <li class="nav-item"><a class="nav-link " href="home.html#testo_home">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link " href="insindacabilita.html">INSINDACABILITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="incompatibilita.html">INCOMPATIBILITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="indennita.html">INDENNITA'</a></li>
+                        <li class="nav-item"><a class="nav-link" href="immunita.html">IMMUNITA'</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="autorizzazione_procedere.html">AUTORIZZAZIONE A PROCEDERE</a></li>
+                      </ul>
+                </nav>
+                <div id="testo">
+                    <h1 id="titolo_testo">Autorizzazione a procedere</h1></br>
+                    <p class="p_testo">
+                        <img class="img_testo_sto" src="im_autorizzazione_procedere.jpg">
+                        
+                        L'autorizzazione a procedere, nell'ordinamento processuale italiano, è un permesso di svolgere un'azione penale rilasciato alla magistratura da altra autorità. Si tratta di un istituto immunitario che assoggetta il procedimento penale all'atto autorizzatorio di un organo non giurisdizionale.
+                       <br>
+                        Per autorizzazione a procedere si intende un atto con cui determinati organi rimuovono un ostacolo alla prosecuzione dell'azione penale nei confronti di un determinato soggetto (art. 343 c.p.p.); essa viene richiesta dal pubblico ministero (art. 344 c.p.p.).
+                    </p>
+                    <h1 id="titolo_storia">Storia</h1></br>
+                    <p class="p_testo_sto">
+                        <img class="img_testo_sto" src="im_autorizzazione_procedere_1.jpg">
+                        
+                        Fino al 1993 la Costituzione stabiliva che nessun membro del Parlamento poteva essere sottoposto a procedimento penale senza l’autorizzazione della Camera di appartenenza. Le origini dell’istituto risalivano nel tempo e si collegavano all’esigenza di evitare che iniziative giudiziarie persecutorie o pretestuose potessero interferire con il corretto funzionamento della funzione legislativa, incidendo sulle maggioranze parlamentari o impedendo la partecipazione alle sedute di singoli parlamentari. 
+                        <br>
+                        Col tempo però l’autorizzazione a procedere si era trasformata in un vero e proprio privilegio corporativo che assicurava ai parlamentari una immunità penale pressoché assoluta: in uno scambio di reciproci favori tra le varie forze politiche, l’autorizzazione a procedere non veniva mai concessa, sino al punto da negarla anche in caso di reati – ad esempio l’omicidio colposo a seguito di incidente stradale – in cui non era ravvisabile alcun sia pur remoto fumus persecutionis.                       
+                        <br>
+                        Autorizzazioni a procedere presentate dal 1948 al 1993:
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <td>Legislatura</td>
+                                <td>Presentate</td>
+                                <td>Concessioni</td>
+                            </tr>
+                            <tr>
+                                <td>I</td>
+                                <td>172</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>II</td>
+                                <td>94</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>III</td>
+                                <td>58</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>IV</td>
+                                <td>75</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>V</td>
+                                <td>69</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>VI</td>
+                                <td>159</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>VII</td>
+                                <td>67</td>
+                                <td>27</td>
+                            </tr>
+                            <tr>
+                                <td>VIII</td>
+                                <td>103</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>IX</td>
+                                <td>83</td>
+                                <td>21</td>
+                            </tr>
+                            <tr>
+                                <td>X</td>
+                                <td>112</td>
+                                <td>12</td>
+                            </tr>
+                            <tr>
+                                <td>XI</td>
+                                <td>233</td>
+                                <td>76</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                    </p>
+                    <p class="p_testo_sto">
+                        <img class="img_testo_sto" src="im_autorizzazione_procedere_2.jpg">
+                        Anche a seguito della dirompente <a href="tangentopoli.html">Tangentopoli</a> dei primi anni Novanta del secolo scorso, che aveva coinvolto decine di parlamentari e ministri, la legge costituzionale n. 3 del 1993 ha tempestivamente e profondamente modificato l’istituto dell’autorizzazione a procedere previsto dall’articolo 68 della Costituzione.
+                        <br>
+                        Da allora il magistrato può iniziare il procedimento penale senza alcuna autorizzazione della Camera alla quale il parlamentare appartiene. Forme di autorizzazione intervengono in un momento successivo, a tutela della libertà del singolo parlamentare di svolgere le proprie funzioni e quindi in ultima analisi a tutela del corretto funzionamento del Parlamento nel suo complesso. Da una parte sta l’esigenza della giustizia di compiere gli atti necessari all’accertamento dei reati contestati al parlamentare, dall’altro vi è l’interesse del Parlamento di tutelare i propri rappresentanti da ingerenze e limitazioni della libertà personale che potrebbero ostacolare l’esercizio della funzione legislativa.
+                        <br>
+                        Il contemperamento tra esigenze della giustizia e tutela dell’attività parlamentare si è tradotto in una disciplina costituzionale che sottopone alla autorizzazione della Camera di appartenenza gli atti di perquisizione personale o domiciliare, nonché l’arresto o altre forme di privazione della libertà o detenzione del parlamentare, salvi i casi di arresto in flagranza di reato e di privazione della libertà in esecuzione di una sentenza irrevocabile di condanna. 
+                        <br>
+                        Infine l’autorizzazione è richiesta per sottoporre i membri del Parlamento ad intercettazione di conversazioni o comunicazioni e a sequestro di corrispondenza.
+                        <br>
+                        <br>
+                        <img class="img_testo_sto" src="im_autorizzazione_procedere_3.jpg">
+                        Diversa è la disciplina nel caso di reati commessi dal Presidente del consiglio o dai ministri nell’esercizio delle loro funzioni.Le cronache istituzionali hanno di recente avuto occasione di parlarne in relazione al caso <a href="diciotti.html">Diciotti</a>, che ha interessato l’ex ministro dell’interno Matteo Salvini. Nei confronti dei reati ministeriali l’intervento del potere politico è più diretto e immediato: a seguito di una riforma costituzionale del 1989 i reati commessi dal Presidente del consiglio e dai ministri sono giudicati dalla magistratura ordinaria, che potrà procedere solo se autorizzata dal Parlamento: in particolare, dalla camera di appartenenza se il ministro è parlamentare, dal Senato se non è parlamentare.
+                        <br>
+                        Il Parlamento può negare l’autorizzazione ove ritenga sulla base di una valutazione squisitamente politica e insindacabile, che il ministro inquisito abbia agito per la tutela di un interesse dello Stato costituzionalmente rilevante ovvero “per il perseguimento di un preminente interesse pubblico nell’esercizio della funzione di governo”.
+                    </p>
+                </div>
+                <footer>
+                    <p>AUTORE: Gabriele Stella, Alessandro Mercuri</p>
+                </footer>
+            </div>
+
+
+		
+
+        <script type="text/javascript">
+            /*MENU AD AMBURGHER*/
+			function nav_open() {
+			  document.getElementById("Sidebar").style.width = "100%";
+			  document.getElementById("Sidebar").style.display = "block";
+			  document.getElementById("div_btn").style.visibility = 'hidden';
+			}
+			function nav_close() {
+			  document.getElementById("Sidebar").style.display = "none";
+			  document.getElementById("div_btn").style.visibility = "visible";
+			}
+			var header = document.getElementById("ul1");
+			var btns = header.getElementsByClassName("nav_1");
+			for (var i = 0; i < btns.length; i++) {
+			   btns[i].addEventListener("click", function() {
+			   document.getElementById("Sidebar").style.display = "none";
+			   document.getElementById("div_btn").style.visibility = "visible";		  
+			  });
+			}
+	
+		</script>
+
+    </body>
+    
+	</html>

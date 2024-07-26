@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+            body {
+				background-image: url("im_binari.jpg");
+				background-repeat: no-repeat;
+				background-position: center; 
+				background-size: 100% 100%;
+		        text-align:center; 
+				color:orange;
+				}
+			table,td {
+			    border:solid  2px white; 
+				margin:auto; color:black; 
+				background:white; 
+				}
+			h1, h2 {
+				color:rgb(13, 167, 167); 
+				font-family:Courier New; 
+				background:rgb(209, 219, 214);
+				text-align:center; 
+				border-radius:20px 20px 20px 20px; 
+				margin:10px auto 20px auto;
+                text-shadow:1px 1px 1px black;				
+				}
+			.myDiv {
+				background-color:rgb(209, 219, 214);
+                margin:auto;				
+				text-align: center;
+				height :500px;
+				width:500px;
+				color:white;
+				border-radius:20px 20px 20px 20px;
+				}
+			button{
+			    color:black; 				 
+				background:rgb(13, 167, 167); 
+				text-align: center; 
+                height :50px;
+				width:100px;
+				margin:10px auto 20px auto; 
+				border-radius:100px 100px 100px 100px;
+				}
+				label{
+					color:rgb(13, 167, 167); 
+				}
+		</style>        
+	</head>
+	<body>
+		<h1>CONVERTITORE</h1>
+		<h2><marquee>da numero decimale a binario o viceversa</marquee></h2>
+		<div class="myDiv">
+		<br/>
+		<p id='ptxr'><h1>CONVERTI</h1></p>
+		<br/>
+		<form action="/action_page.php">
+			  <input type="radio" id="binario" name="fav_language" value="Click me" onclick='converti_numero_dec()'>
+			  <label for="binario">IN BINARIO</label>
+			  <input type="radio" id="decimale" name="fav_language" value="Click me" onclick='converti_numero_bin()'>
+			  <label for="decimale">IN DECIMALE</label>
+		</form>
+		<br/>
+		<label id='lbl_numero' for='numero' style="visibility:hidden;color:black">Inserisci numero da convertire: </label>
+		<input type='numero' id='numero_inp' style="visibility:hidden">
+		<button id='btt_converti' onclick='converti()' style="visibility:hidden">converti</button>
+		<br/>
+		
+		
+	    <script>
+		    var f_converti_in_bin=false;
+		    function converti_numero_dec(){
+			    elem=document.getElementById("tbl_num");
+			    elem.style.visibility="hidden";
+			    elem=document.getElementById("lbl_numero");
+                elem.style.visibility="visible";
+				elem=document.getElementById("lbl_numero");
+                elem.style.visibility="visible";
+				elem=document.getElementById("numero_inp");
+                elem.style.visibility="visible";
+                elem=document.getElementById("btt_converti");
+                elem.style.visibility="visible";
+				elem=document.getElementById("numero_inp");
+                elem.value="";
+                f_converti_in_bin=true;
+                elem=document.getElementById("numero_inp");
+			    elem.style.background="white";
+				elem=document.getElementById("h1_errore");
+				elem.style.visibility="hidden";				
+			}
+		    function converti_numero_bin(){
+			    elem=document.getElementById("tbl_num");
+			    elem.style.visibility="hidden";
+				elem=document.getElementById("lbl_numero");
+                elem.style.visibility="visible";
+				elem=document.getElementById("numero_inp");
+                elem.style.visibility="visible";
+                elem=document.getElementById("btt_converti");
+                elem.style.visibility="visible";
+				elem=document.getElementById("numero_inp");
+                elem.value="";
+                f_converti_in_bin=false;
+                elem=document.getElementById("numero_inp");
+			    elem.style.background="white";
+				elem=document.getElementById("h1_errore");
+				elem.style.visibility="hidden";				
+			}
+		    function converti(){
+			    var f_errore=false;
+			    if (f_converti_in_bin){
+				    var nd = document.getElementById("numero_inp").value;
+					var lnd=nd.length;
+					var nb='';
+					if (nd==''){
+					    f_errore=true;
+						e=errore(f_errore);
+					} else {
+						if ((nd%1)==0){
+							while (nd>0){
+								if (nd>=0){
+									if ((nd%2)==0) {
+										nd=nd/2;
+										nb=0+''+nb;								
+									} else {
+										nd=(nd-1)/2;
+										nb=1+''+nb;
+									}	
+								}
+							}
+							f_errore=false;
+							e=errore(f_errore);						
+							elem=document.getElementById("tbl_num");
+							elem.style.visibility="visible";
+							elem.rows[0].cells[0].innerHTML='NUMERO BINARIO:';					
+							elem.rows[0].cells[1].innerHTML=nb;
+							
+						} else {
+							f_errore=true;
+							e=errore(f_errore);
+						}
+					}                   					
+					}else{
+					    var nb = document.getElementById("numero_inp").value;
+						var nd=0;
+						var lnb=nb.length;
+						var e=0;
+						var d=2;
+						f_errore=false;
+						if (nb==''){
+							f_errore=true;
+							e=errore(f_errore);
+						} else {
+							for (i=lnb-1;i>=0;i--){
+								if(nb[i]==1){
+									nd=nd+d**e;								
+								} else{ 
+									if(nb[i]==0){
+								        
+									}else{
+										f_errore=true;
+									}							
+								}
+								e++;				
+							}
+						}
+						elem=document.getElementById("tbl_num");
+						elem.style.visibility="visible";
+						elem.rows[0].cells[0].innerHTML='NUMERO DECIMALE:';					
+						elem.rows[0].cells[1].innerHTML=nd;
+						e=errore(f_errore);					
+					}			
+			}
+			function errore(e){
+			    if(e==false){						
+					elem=document.getElementById("h1_errore");
+					elem.style.visibility="hidden";
+                    elem=document.getElementById("numero_inp");
+					elem.style.background="white";					
+				} else {
+					elem=document.getElementById("tbl_num");
+					elem.style.visibility="hidden";
+					elem=document.getElementById("h1_errore");
+					elem.style.visibility="visible";
+					elem=document.getElementById("numero_inp");
+					elem.style.background="red";
+				}			
+			}
+		    
+		    document.write('<table id="tbl_num" style="visibility:hidden">');			
+			document.write("<tr >");				
+			document.write("<td>");
+			document.write("</td>");
+			document.write("<td>");
+			document.write("</td>");
+			document.write("</tr>");								
+			document.write("</table>");
+			
+			
+			document.write('<h1 id="h1_errore"style="background:red;visibility:hidden;color:white;" >');
+			document.write('ERRORE');
+			document.write("</h1>");
+			
+		
+		</script>
+        </div>
+	</body>
+</html>
